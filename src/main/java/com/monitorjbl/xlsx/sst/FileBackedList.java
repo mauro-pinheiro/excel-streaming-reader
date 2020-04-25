@@ -72,6 +72,7 @@ public class FileBackedList implements AutoCloseable {
   }
 
   private void writeToFile(String str) throws IOException {
+    if(str == null) return;
     synchronized (channel) {
       ByteBuffer bytes = ByteBuffer.wrap(str.getBytes(StandardCharsets.UTF_8));
       ByteBuffer length = ByteBuffer.allocate(4).putInt(bytes.array().length);
